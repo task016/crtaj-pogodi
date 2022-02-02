@@ -1,0 +1,17 @@
+.content {
+  height: 770px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  background-color: rgb(232, 234, 240);
+}
+
+.chatInput {
+  width: 268px;
+  height: 25px;
+}

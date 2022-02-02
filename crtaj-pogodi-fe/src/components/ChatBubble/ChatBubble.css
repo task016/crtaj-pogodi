@@ -1,0 +1,60 @@
+/* CSS talk bubble */
+.talk-bubble-left {
+  border-radius: 10px;
+  margin: 15px;
+  margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: fit-content;
+  background-color: lightblue;
+}
+
+.talk-bubble-right {
+  border-radius: 10px;
+  margin: 15px;
+  margin-left: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: fit-content;
+  background-color: lightblue;
+}
+
+.tri-right.top:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: lightblue transparent transparent transparent;
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.top.left:after {
+  left: -20px;
+  right: auto;
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.top.right:after {
+  left: auto;
+  right: -20px;
+}
+
+/* talk bubble contents */
+.talktext {
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+}
+.talktext p {
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+.talktext div {
+  font-size: 12px;
+}

@@ -1,0 +1,16 @@
+.roundButton {
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  z-index: 20;
+  font-size: large;
+}
+
+.roundButton__btn-clear {
+  width: 100px;
+  font-size: smaller;
+}
+
+.canvas-hidecursor {
+  cursor: none;
+}

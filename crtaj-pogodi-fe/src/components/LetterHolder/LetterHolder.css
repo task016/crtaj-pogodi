@@ -1,0 +1,9 @@
+.letter {
+  font-size: 32px;
+  border-bottom-color: red;
+  border-bottom-style: dashed;
+  display: inline;
+  margin-left: 16px;
+  min-width: 32px;
+  min-height: 32pt;
+}

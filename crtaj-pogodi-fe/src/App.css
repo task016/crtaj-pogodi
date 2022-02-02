@@ -1,0 +1,12 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+}
+
+.canvasAndChatContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+}
