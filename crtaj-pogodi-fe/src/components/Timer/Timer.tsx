@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 
 type TimerProps = {
   startValue: number;
@@ -24,11 +24,11 @@ const Timer: React.FC<TimerProps> = ({
     };
   }, [interval]);
 
-  useEffect(() => {
+  useEffect(() => {  
     if (onValueChange) {
       onValueChange(value);
     }
-  }, [value]);
+  }, [value, onValueChange]);
 
   return (
     <div className="timer">
