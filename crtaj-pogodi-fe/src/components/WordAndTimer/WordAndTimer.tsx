@@ -10,7 +10,7 @@ type WordAndTimerProps = {
 
 const WordAndTimer = ({ word }: WordAndTimerProps) => {
   const [visibleLetters, setVisibleLetters] = useState<boolean[]>(
-    [...word].map((l) => false),
+    [...word].map(() => false),
   );
 
   const onTimerChange = () => {
@@ -21,7 +21,7 @@ const WordAndTimer = ({ word }: WordAndTimerProps) => {
     let nextVisibleLetter = Math.floor(Math.random() * hiddenLettersCount);
     let nextVisibleIndex = 0;
     visibleLetters.forEach((el, index) => {
-      if (el === false) nextVisibleLetter--;
+      if (el === false) { nextVisibleLetter--; }
       if (nextVisibleLetter === 0) {
         nextVisibleIndex = index;
       }

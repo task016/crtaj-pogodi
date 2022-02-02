@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LetterHolder from '../LetterHolder/LetterHolder';
 import './WordHolder.css';
 

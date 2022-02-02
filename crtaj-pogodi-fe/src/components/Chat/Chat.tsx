@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , KeyboardEvent } from 'react';
 import './Chat.css';
 import ChatBubble from '../ChatBubble/ChatBubble';
-import { KeyboardEvent } from 'react';
 
+type ChatMessage = {
+  username: string;
+  text: string;
+};
 const inputJSON: Array<ChatMessage> = [
   {
     username: 'user 1',
@@ -40,10 +43,7 @@ const inputJSON: Array<ChatMessage> = [
 
 type Position = 'left' | 'right';
 
-type ChatMessage = {
-  username: string;
-  text: string;
-};
+
 
 const Chat = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(inputJSON);
@@ -53,9 +53,9 @@ const Chat = () => {
 
   useEffect(() => {
     if (contentDivRef)
-      contentDivRef.scrollTop = contentDivRef.scrollHeight
+      { contentDivRef.scrollTop = contentDivRef.scrollHeight
         ? contentDivRef.scrollHeight
-        : 0;
+        : 0; }
   }, [contentDivRef, chatHistory]);
 
   const chatItems = chatHistory.map((item, index) => {
@@ -72,8 +72,8 @@ const Chat = () => {
   });
 
   const handleInputKeyPressed = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== 'Enter' && event.code !== '13') return;
-    if (!inputRef || !inputRef.value) return;
+    if (event.key !== 'Enter' && event.code !== '13') { return; }
+    if (!inputRef || !inputRef.value) { return; }
 
     setChatHistory([
       ...chatHistory,
