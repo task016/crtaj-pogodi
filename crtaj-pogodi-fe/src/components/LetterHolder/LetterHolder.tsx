@@ -6,7 +6,7 @@ export type LetterHolderProps = {
 };
 
 const LetterHolder: React.FC<LetterHolderProps> = ({ letter }) => {
-  return <div className="letter">{letter}</div>;
+  return <div className={letter !== ' ' ? 'letter': 'letter__space'}>{letter}</div>;
 };
 
 export default LetterHolder;

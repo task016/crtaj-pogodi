@@ -7,3 +7,8 @@
   min-width: 32px;
   min-height: 32pt;
 }
+
+.letter__space {
+  border-bottom-style: none;
+  min-width: 32px;
+}
