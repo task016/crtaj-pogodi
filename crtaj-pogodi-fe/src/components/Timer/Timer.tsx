@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 type TimerProps = {
   startValue: number;
   interval: number;
-  onValueChange: () => void;
+  onValueChange: (time: number) => void;
   className?: string;
 };
 
@@ -19,18 +19,16 @@ const Timer: React.FC<TimerProps> = ({
       () => setValue((oldValue) => (oldValue > 0 ? oldValue - 1 : 0)),
       interval,
     );
-    return () => clearInterval(intervalHandle);
+    return () => {
+      clearInterval(intervalHandle);
+    };
   }, [interval]);
 
-  const onChange = useCallback(() => {
-    if (onValueChange) {
-      onValueChange();
-    }
-  }, [onValueChange]);
-
   useEffect(() => {
-    onChange();
-  }, [value, onChange]);
+    if (onValueChange) {
+      onValueChange(value);
+    }
+  }, [value]);
 
   return (
     <div className="timer">

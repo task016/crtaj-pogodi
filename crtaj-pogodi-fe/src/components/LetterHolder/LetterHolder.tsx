@@ -2,15 +2,11 @@ import React from 'react';
 import './LetterHolder.css';
 
 export type LetterHolderProps = {
-  visible?: boolean;
   letter: string;
 };
 
-const LetterHolder: React.FC<LetterHolderProps> = ({
-  visible = false,
-  letter,
-}) => {
-  return <div className="letter">{visible ? letter : ''}</div>;
+const LetterHolder: React.FC<LetterHolderProps> = ({ letter }) => {
+  return <div className="letter">{letter}</div>;
 };
 
 export default LetterHolder;

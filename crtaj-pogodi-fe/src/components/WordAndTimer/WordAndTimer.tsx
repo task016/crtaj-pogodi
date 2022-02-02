@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import './WordAndTimer.css';
 import WordHolder from '../WordHolder/WordHolder';
 import Timer from '../Timer/Timer';
@@ -8,38 +8,54 @@ type WordAndTimerProps = {
   word: string;
 };
 
+const random = (upperLimit: number) =>
+  Math.floor(Math.random() * (upperLimit + 1));
+
 const WordAndTimer = ({ word }: WordAndTimerProps) => {
-  const [visibleLetters, setVisibleLetters] = useState<boolean[]>(
-    [...word].map((l) => false),
+  const [characters, setCharacters] = useState<string[]>(
+    new Array(word.length).fill(''),
   );
 
-  const onTimerChange = () => {
-    const hiddenLettersCount = visibleLetters.reduce(
-      (prev, cur) => (cur === false ? prev + 1 : prev),
-      0,
+  const [time, setTime] = useState(60);
+
+  const lettersMap: Record<string, string> = useMemo(() => {
+    const letters = [...word];
+    const map = letters.reduce(
+      (acc, letter, index) => ({
+        ...acc,
+        [index]: letter,
+      }),
+      {},
     );
-    let nextVisibleLetter = Math.floor(Math.random() * hiddenLettersCount);
-    let nextVisibleIndex = 0;
-    visibleLetters.forEach((el, index) => {
-      if (el === false) nextVisibleLetter--;
-      if (nextVisibleLetter === 0) {
-        nextVisibleIndex = index;
-      }
-    });
-    const nextVisibleLetters = [...visibleLetters];
-    nextVisibleLetters[nextVisibleIndex] = true;
-    setVisibleLetters(nextVisibleLetters);
-  };
+    return map;
+  }, [word]);
+
+  const shouldRevealLetter = useCallback(() => {}, []);
+
+  const onChange = useCallback(
+    (time) => {
+      setTime(time);
+      const letterIndices = Object.keys(lettersMap);
+      if (!letterIndices.length) return;
+
+      const revealIndex = letterIndices[random(letterIndices.length - 1)];
+
+      setCharacters((prevChars) => {
+        const newChars = [...prevChars];
+        newChars[+revealIndex] = lettersMap[revealIndex];
+        return newChars;
+      });
+
+      delete lettersMap[revealIndex];
+    },
+    [lettersMap],
+  );
 
   return (
     <div className="wordAndTimerContainer">
       <div>
-        <Timer
-          startValue={60}
-          interval={1000}
-          onValueChange={onTimerChange}
-        ></Timer>
-        <WordHolder word="pogodak" visibleLetters={visibleLetters}></WordHolder>
+        <Timer startValue={60} interval={1000} onValueChange={onChange}></Timer>
+        <WordHolder characters={[...characters]}></WordHolder>
       </div>
     </div>
   );

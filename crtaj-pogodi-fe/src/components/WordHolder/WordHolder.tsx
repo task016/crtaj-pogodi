@@ -1,24 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LetterHolder from '../LetterHolder/LetterHolder';
 import './WordHolder.css';
 
 type WordHolderProps = {
-  word: string;
-  visibleLetters: boolean[];
+  characters: string[];
 };
 
-const WordHolder: React.FC<WordHolderProps> = (props) => {
-  const { word, visibleLetters } = props;
-  const letters = [...word];
-
+const WordHolder: React.FC<WordHolderProps> = ({ characters }) => {
   return (
     <span className="word">
-      {letters.map((letter, index) => (
-        <LetterHolder
-          key={`${letter}${index}`}
-          letter={letter}
-          visible={visibleLetters[index]}
-        />
+      {characters.map((char, index) => (
+        <LetterHolder key={`${char}${index}`} letter={char} />
       ))}
     </span>
   );
