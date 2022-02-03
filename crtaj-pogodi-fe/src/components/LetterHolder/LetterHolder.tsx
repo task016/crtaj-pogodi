@@ -9,8 +9,6 @@ export type LetterHolderProps = {
 const LetterHolder: React.FC<LetterHolderProps> = ({
   visible = false,
   letter,
-}) => {
-  return <div className="letter">{visible ? letter : ''}</div>;
-};
+}) => <div className="letter">{visible ? letter : ''}</div>;
 
 export default LetterHolder;

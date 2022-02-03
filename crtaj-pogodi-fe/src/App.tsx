@@ -4,8 +4,7 @@ import './App.css';
 import Chat from './components/Chat/Chat';
 import WordAndTimer from './components/WordAndTimer/WordAndTimer';
 
-const App = () => {
-  return (
+const App = () => (
     <div className="mainContainer">
       <WordAndTimer word="pogodak"></WordAndTimer>
       <div className="canvasAndChatContainer">
@@ -14,6 +13,5 @@ const App = () => {
       </div>
     </div>
   );
-};
 
 export default App;
