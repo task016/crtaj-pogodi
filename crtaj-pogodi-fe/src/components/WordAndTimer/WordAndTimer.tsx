@@ -1,7 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback } from 'react';
 import './WordAndTimer.css';
 import WordHolder from '../WordHolder/WordHolder';
 import Timer from '../Timer/Timer';
+import useCharacters from './hooks/useCharacters.hook';
 
 type WordAndTimerProps = {
   className?: string;
@@ -11,36 +12,26 @@ type WordAndTimerProps = {
 const random = (upperLimit: number) =>
   Math.floor(Math.random() * (upperLimit + 1));
 
+
 const WordAndTimer = ({ word }: WordAndTimerProps) => {
-  const [characters, setCharacters] = useState<string[]>(
-    new Array(word.length).fill(''),
-  );
-
-  const [time, setTime] = useState(60);
-
-  const lettersMap: Record<string, string> = useMemo(() => {
-    const letters = [...word];
-    const map = letters.reduce(
-      (acc, letter, index) => ({
-        ...acc,
-        [index]: letter,
-      }),
-      {},
-    );
-    return map;
-  }, [word]);
-
-  const shouldRevealLetter = useCallback(() => {}, []);
+ const {lettersMap, numOfSpaces,characters, setCharacters, shouldRevealLetter} = useCharacters(word)
 
   const onChange = useCallback(
-    (time) => {
-      setTime(time);
+    (time: number) => {
       const letterIndices = Object.keys(lettersMap);
       if (!letterIndices.length) return;
+      if (lettersMap[' ']) delete lettersMap[' '];
 
-      const revealIndex = letterIndices[random(letterIndices.length - 1)];
+      const revealIndex =
+        letterIndices[random(letterIndices.length - 1 - numOfSpaces)];
 
-      setCharacters((prevChars) => {
+      if (time === 0) {
+        setCharacters([...word]);
+        return;
+      }
+      if (!(time && shouldRevealLetter(time))) return;
+
+      setCharacters((prevChars: string[]) => {
         const newChars = [...prevChars];
         newChars[+revealIndex] = lettersMap[revealIndex];
         return newChars;
@@ -48,14 +39,14 @@ const WordAndTimer = ({ word }: WordAndTimerProps) => {
 
       delete lettersMap[revealIndex];
     },
-    [lettersMap],
+    [lettersMap, numOfSpaces,setCharacters, shouldRevealLetter, word],
   );
 
   return (
     <div className="wordAndTimerContainer">
       <div>
         <Timer startValue={60} interval={1000} onValueChange={onChange}></Timer>
-        <WordHolder characters={[...characters]}></WordHolder>
+        <WordHolder characters={characters}></WordHolder>
       </div>
     </div>
   );

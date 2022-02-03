@@ -5,7 +5,7 @@ import Chat from './components/Chat/Chat';
 import WordAndTimer from './components/WordAndTimer/WordAndTimer';
 
 const App = () => {
-  const [word, setWord] = useState('Diferencijal');
+  const [word,] = useState('MALA SIRENA');
 
   return (
     <div className="mainContainer">

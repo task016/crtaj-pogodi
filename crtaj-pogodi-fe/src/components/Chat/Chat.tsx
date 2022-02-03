@@ -40,10 +40,10 @@ const inputJSON: Array<ChatMessage> = [
 
 type Position = 'left' | 'right';
 
-type ChatMessage = {
+interface ChatMessage {
   username: string;
   text: string;
-};
+}
 
 const Chat = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(inputJSON);
