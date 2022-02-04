@@ -1,0 +1,14 @@
+.playerCardContainer {
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1px;
+  width: 200px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+}
+
+.profilePictureContainer {
+  height: 60px;
+  width: 60px;
+}
