@@ -6,20 +6,29 @@ interface PlayerCardProps {
   profilePicture: string;
   score: number;
   isDrawing: boolean;
+  isWinning: boolean;
 }
 
 const PlayerCard = (props: PlayerCardProps) => {
-  const { username, profilePicture, score, isDrawing } = props;
+  const { username, profilePicture, score, isDrawing, isWinning } = props;
+
+  const getArticleClassName = () => {
+    let className = 'leaderboard__profile';
+    if (isDrawing) className += ' drawing';
+    if (isWinning) className += ' winning';
+    return className;
+  };
+
   return (
-    <div className="playerCardContainer">
-      <div className="profilePictureContainer">
-        <img height={60} width={60} src={profilePicture} alt={username}></img>
-      </div>
-      <div>
-        <p>{username}</p>
-        <p>{score}</p>
-      </div>
-    </div>
+    <article className={getArticleClassName()}>
+      <img
+        src={profilePicture}
+        alt={username}
+        className="leaderboard__picture"
+      ></img>
+      <span className="leaderboard__name">{username}</span>
+      <span className="leaderboard__value">{score}</span>
+    </article>
   );
 };
 

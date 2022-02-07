@@ -9,6 +9,7 @@ const listOfPlayers = [
     profilePicture:
       'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: false,
   },
   {
     username: 'some guy',
@@ -16,6 +17,7 @@ const listOfPlayers = [
     profilePicture:
       'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: true,
   },
   {
     username: 'some guy',
@@ -23,6 +25,7 @@ const listOfPlayers = [
     profilePicture:
       'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: false,
   },
   {
     username: 'some guy',
@@ -30,41 +33,49 @@ const listOfPlayers = [
     profilePicture:
       'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: false,
   },
   {
     username: 'some guy',
     score: 1000,
-    profilePicture: 'url',
-    isDrawing: false,
+    profilePicture:
+      'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
+    isDrawing: true,
+    isWinning: false,
   },
   {
     username: 'some guy',
     score: 1000,
-    profilePicture: 'url',
+    profilePicture:
+      'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: false,
   },
   {
     username: 'some guy',
     score: 1000,
-    profilePicture: 'url',
+    profilePicture:
+      'http://www.canada-work.com/_/rsrc/1531284300421/assistants/female_generic_profile.png',
     isDrawing: false,
+    isWinning: false,
   },
 ];
 
 const PlayersList = () => {
   return (
-    <div className="playersListContainer">
-      {listOfPlayers.map((el, index) => {
-        return (
+    <div>
+      <main className="leaderboard__profiles">
+        {listOfPlayers.map((el, index) => (
           <PlayerCard
             key={`${el.username}:${index}`}
             username={el.username}
-            profilePicture={el.profilePicture}
             score={el.score}
+            profilePicture={el.profilePicture}
             isDrawing={el.isDrawing}
+            isWinning={el.isWinning}
           ></PlayerCard>
-        );
-      })}
+        ))}
+      </main>
     </div>
   );
 };
