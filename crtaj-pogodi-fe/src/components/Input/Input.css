@@ -1,0 +1,22 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.input-container[hidden] {
+    display: none;
+}
+
+.input-container > label {
+    font-size: small;
+}
+
+.input-container > input {
+    height: 30px;
+    width: 200px;
+    padding: 2px 10px;
+    font-size: larger;
+    border-radius: 5px;
+    border-width: 1px;
+}

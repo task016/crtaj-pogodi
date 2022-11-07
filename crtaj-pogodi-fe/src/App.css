@@ -5,8 +5,8 @@
 }
 
 .canvasAndChatContainer {
-  display: flex;
-  flex-direction: row;
+  display: inline-grid;
+  grid-template-columns: 1fr 2fr 1fr;
   justify-content: center;
   height: 100vh;
 }

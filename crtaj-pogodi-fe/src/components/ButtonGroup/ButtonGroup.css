@@ -1,0 +1,12 @@
+.buttons-container {
+    display: flex;
+    gap: 5px;
+}
+
+.buttons-container[data-orientation='horizontal'] {
+    flex-direction: row;
+}
+
+.buttons-container[data-orientation='vertical'] {
+    flex-direction: column;
+}

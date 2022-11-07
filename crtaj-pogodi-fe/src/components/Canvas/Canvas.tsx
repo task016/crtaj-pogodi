@@ -2,6 +2,8 @@ import React, { ChangeEvent, useState } from 'react';
 import './Canvas.css';
 import CanvasDraw from 'react-canvas-draw';
 import classNames from 'classnames';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import Button from '../Button/Button';
 
 type CanvasProps = {
   className?: string;
@@ -9,12 +11,11 @@ type CanvasProps = {
   height: number;
 };
 
-const Canvas: React.FC<CanvasProps> = (props) => {
-  const { className, height, width } = { ...props };
+const Canvas: React.FC<CanvasProps> = ({className, height, width}) => {
   const [brushRadius, setBrushRadius] = useState<number>(12);
   const [brushColor, setBrushColor] = useState<string>('rgb(0,0,0)');
   const [canvasRef, setCanvasRef] = useState<CanvasDraw | null>();
-  const classes = classNames(className, 'canvas-hidecursor');
+  const classes = classNames(className, 'canvas-container');
 
   const handleIncrease = () => {
     setBrushRadius(brushRadius + 4);
@@ -52,31 +53,14 @@ const Canvas: React.FC<CanvasProps> = (props) => {
         canvasWidth={width}
         canvasHeight={height}
       />
-      <button className="roundButton" onClick={handleIncrease}>
-        +
-      </button>
-      <button className="roundButton" onClick={handleDecrease}>
-        -
-      </button>
-      <button
-        className="roundButton roundButton__btn-clear"
-        onClick={handleClear}
-      >
-        Clear
-      </button>
-      <button
-        className="roundButton roundButton__btn-clear"
-        onClick={handleEraser}
-      >
-        Erase
-      </button>
-      <button
-        className="roundButton roundButton__btn-clear"
-        onClick={handleUndo}
-      >
-        Undo
-      </button>
-      <input type="color" value="#000000" onChange={handleColorChange}></input>
+      <ButtonGroup orientation='horizontal'>
+        <Button label='+' onClick={handleIncrease} shape='circle'></Button>
+        <Button label='-' onClick={handleDecrease} shape='circle'></Button>
+        <Button label='Erase' onClick={handleEraser} ></Button>
+        <Button label='Clear' onClick={handleClear} ></Button>
+        <Button label='Undo' onClick={handleUndo} ></Button>
+        <input type="color" value="#000000" onChange={handleColorChange}></input>
+      </ButtonGroup>
     </div>
   );
 };

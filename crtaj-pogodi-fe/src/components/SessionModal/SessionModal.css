@@ -1,0 +1,42 @@
+.modal{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 999;
+    width: 300px;
+    min-height: 271px;;
+    height: min-content;
+    border-style: ridge;
+    box-shadow: lightgray 3px 3px 2px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.center-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+.session-form {
+    padding: 10px;
+}
+
+.session-control-buttons {
+    display: flex;
+    position: relative;
+    bottom: 5%;
+    width: 100%;
+    user-select: none;
+    height: 30px;
+    margin: 10px;
+    justify-content: space-evenly;
+    align-self: center;
+}

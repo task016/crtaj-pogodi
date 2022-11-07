@@ -1,0 +1,70 @@
+.button {
+    display: flex;
+    border-style: solid;
+    border-width:1px;
+    width: min-content;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    padding: 1px 6px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.button[data-variant]:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--box-shadow-color) 0 0 0;
+}
+
+/* Button Variants */
+
+.button[data-variant='standard'] {
+    background-color: #4681f4;
+    border-color: #7a9bde;
+    color: #f5f5f5;
+    --box-shadow-color: #7a9bde;
+    box-shadow: var(--box-shadow-color) 2px 2px 2px;
+}
+ 
+.button[data-variant='standard']:hover {
+    background-color: #154fc4;
+}
+
+.button[data-variant='neutral'] {
+    background-color: #e2eaf0;
+    border-color: #6994ea;
+    color:#6994ea;
+    --box-shadow-color: #6994ea;
+    box-shadow: var(--box-shadow-color) 2px 2px 2px;
+}
+
+.button[data-variant='neutral']:hover {
+    background-color: #c3c7d0;
+}
+
+/* Button Shapes */
+
+.button[data-shape='rectangle'] {
+    border-radius: 5px;
+}
+
+.button[data-shape='circle'] {
+    border-radius: 50%;
+    width: 30px;
+}
+
+/* Icon Styles */
+
+img {
+    margin-right: 5px;
+    width: 18px;
+}
+
+.button[data-variant='standard'] img{
+    filter: invert(98%) sepia(0%) saturate(17%) hue-rotate(186deg) brightness(114%) contrast(92%);
+}
+
+.button[data-variant='neutral'] img{
+    filter: invert(57%) sepia(18%) saturate(3091%) hue-rotate(196deg) brightness(100%) contrast(84%);
+}
